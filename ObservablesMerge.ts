@@ -16,6 +16,13 @@ RxJs.Observable.merge(a$,b$).subscribe(x=>{
 
 const data$ = RxJs.Observable.range(1,10).map(x=> x*10);
 
+const event$ = data$.filter(x => ((x/10) % 2) === 0);
+
+
+event$.subscribe(x => {
+  console.log(`Value is Event: ${x}`);
+});
+
 data$.subscribe(x=>{
     console.log(x);
 });
