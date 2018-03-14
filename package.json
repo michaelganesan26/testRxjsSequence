@@ -4,8 +4,16 @@
   "description": "RxJS 5 essentials",
   "author": "Yakov Fain",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon ./pull.js 9.5"
+  },
   "dependencies": {
+    "colors": "^1.1.2",
     "nodemon": "^1.14.0",
     "rxjs": "5.1.0"
+  },
+  "devDependencies": {
+    "@types/es6-promise": "0.0.33",
+    "@types/colors": "^1.1.3"
   }
 }
