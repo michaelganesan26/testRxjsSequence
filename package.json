@@ -2,12 +2,13 @@
   "name": "rxjs_samples",
   "version": "1.0.0",
   "description": "RxJS 5 essentials",
-  "author": "Yakov Fain",
+  "author": "Michael Ganesan",
   "license": "MIT",
   "scripts": {
     "start": "nodemon ./pull.js 9.5",
     "fileObserver": "nodemon ./fileObservableBinding.js",
-    "fileNodeJS": "nodemon ./fileObservableNode.js"
+    "fileNodeJS": "nodemon ./fileObservableNode.js",
+    "reduce": "nodemon ./ObservableReduce.js"
   },
   "dependencies": {
     "@types/node": "^9.4.7",

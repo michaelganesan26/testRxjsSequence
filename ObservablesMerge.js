@@ -4,16 +4,17 @@ exports.__esModule = true;
 var RxJs = require("rxjs");
 var a$ = RxJs.Observable.interval(10).map(function (i) { return "A" + i; }).take(10);
 var b$ = RxJs.Observable.interval(5).map(function (i) { return "B" + i; }).take(10);
-RxJs.Observable.merge(a$, b$).subscribe(function (x) {
-    console.log(x);
-}, function (error) { }, function () {
-    console.log('Completed');
-});
-var data$ = RxJs.Observable.range(1, 10).map(function (x) { return x * 10; });
-var event$ = data$.filter(function (x) { return ((x / 10) % 2) === 0; });
-event$.subscribe(function (x) {
-    console.log("Value is Event: " + x);
-});
-data$.subscribe(function (x) {
-    console.log(x);
-});
+// RxJs.Observable.merge(a$,b$).subscribe(x=>{
+//     console.log(x);
+// },(error)=>{},()=>{
+//    console.log('Completed');
+// });
+RxJs.Observable.merge(a$, b$).flatMap(function (x) { return x; }).subscribe(function (x) { return console.log(x); });
+// const data$ = RxJs.Observable.range(1,10).map(x=> x*10);
+// const event$ = data$.filter(x => ((x/10) % 2) === 0);
+// event$.subscribe(x => {
+//   console.log(`Value is Event: ${x}`);
+// });
+// data$.subscribe(x=>{
+//     console.log(x);
+// });
