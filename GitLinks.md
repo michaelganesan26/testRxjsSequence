@@ -26,5 +26,9 @@ git add -A && git commit -m 'Initial Code'
 ## Following is a link to the free versions of gid
 [List of Git Repository Viewers](http://bit.ly/2FLMIAV)
 
+## This is the link for the mark down syntax 
+[Mark Down syntax](http://bit.ly/2HDOiW0)
+
+
 
 
