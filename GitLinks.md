@@ -8,7 +8,7 @@
 
 
 ## Following is the code to commit all the code at once
-git add -A && git commit -m 'Initial Code'
+git add -A && git commit -m 'Initial Code' && git push -u origin master
 
 ## Take a look at the free git viewer and editor 
 
