@@ -8,7 +8,8 @@
     "start": "nodemon ./pull.js 9.5",
     "fileObserver": "nodemon ./fileObservableBinding.js",
     "fileNodeJS": "nodemon ./fileObservableNode.js",
-    "reduce": "nodemon ./ObservableReduce.js"
+    "reduce": "nodemon ./ObservableReduce.js",
+    "catchingError": "nodemon ./catchingErrors.js"
   },
   "dependencies": {
     "@types/node": "^9.4.7",

@@ -60,6 +60,26 @@ let src2$ = Observable.range(1, 20);
 
 //Combine mutlitple Observables
 
+const values$ = Observable.from([
+   Observable.of(1,2,3),
+   Observable.of(4,5,6),
+   Observable.of(7,8,9)
+]);
+
+//values$.subscribe(x=>console.log(x));
+
+//flatmap
+values$.flatMap(v=> v).subscribe(x => console.log(x));
+
+//use concat all to flaten the array
+console.log('Concat all as opposed to flatMap');
+values$.concatAll().subscribe(x => console.log(x));
+
+
+
+
+
+
 
 
 

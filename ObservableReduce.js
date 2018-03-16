@@ -37,6 +37,17 @@ var average$ = src2$.reduce(function (acc, current) {
 //     console.log(`Your current average is: ${x}`);
 //  })
 //Combine mutlitple Observables
+var values$ = Observable_1.Observable.from([
+    Observable_1.Observable.of(1, 2, 3),
+    Observable_1.Observable.of(4, 5, 6),
+    Observable_1.Observable.of(7, 8, 9)
+]);
+//values$.subscribe(x=>console.log(x));
+//flatmap
+values$.flatMap(function (v) { return v; }).subscribe(function (x) { return console.log(x); });
+//use concat all to flaten the array
+console.log('Concat all as opposed to flatMap');
+values$.concatAll().subscribe(function (x) { return console.log(x); });
 // let average$ = src2$.reduce((previous, current) => {
 //     return (
 //         {
