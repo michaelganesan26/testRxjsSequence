@@ -1,12 +1,15 @@
+
 import { Observable } from 'rxjs/Observable';
 import "rxjs";
 import * as colors from "colors";
+
 
 
 const MAXValue = 10;
 const MINValue = 1;
 let data$ = Observable.range(MINValue, MAXValue);
 console.log(colors.magenta('Test Code'));
+
 let x$ = Observable.from(data$).filter((x: number, index: number) => {
     if (x % 2 === 0) {
         return true;
@@ -21,14 +24,14 @@ x$.subscribe(x => {
 
 });
 
-let counter:number = 0;
+//let counter:number = 0;
 
-let updateTicks = (x:number)=>{
-      
-    if(x%2 === 0){
-        counter++;
+let updateTicks = (acc: number, x: number) => {
+
+    if (x % 2 === 0) {
+        acc++;
     }
-    return(counter);
+    return (acc);
 }
 
 
@@ -40,7 +43,7 @@ let updateTicks = (x:number)=>{
 //     console.log(`Your current tick is: ${colors.yellow(counter.toString())}`);
 
 //     if(counter === 13){
-       
+
 //         test$.unsubscribe();
 //     }
 // });
@@ -48,25 +51,26 @@ let updateTicks = (x:number)=>{
 
 //using scan to send the variable and eliminate external reference
 
-const ticks$ = Observable.interval(500).scan(updateTicks,0);  //no reliance on external variables
+//const ticks$ = Observable.interval(500).scan(updateTicks,0);  //no reliance on external variables
 
+const ticks$ = Observable.interval(500).scan(updateTicks, 0).distinct(); //this eliminates repeats
 
-const t1 = ticks$.subscribe(eventTicks =>{
+const t1 = ticks$.subscribe(eventTicks => {
 
-     console.log(`Your event tick counter is local to the stream pipe line: ${colors.magenta(eventTicks.toString())}`);
+    console.log(colors.magenta(`t2 stream: ${eventTicks}`));
 
-      if(eventTicks === 13){
-         t1.unsubscribe();
-      }
+    if (eventTicks === 13) {
+        t1.unsubscribe();
+    }
 });
 
-const t2 = ticks$.subscribe(eventTicks =>{
+const t2 = ticks$.subscribe(eventTicks => {
 
-    console.log(`Your event tick counter is local to the stream pipe line: ${colors.yellow(eventTicks.toString())}`);
+    console.log(colors.yellow(`t2 stream: ${eventTicks}`));
 
-     if(eventTicks === 14){
+    if (eventTicks === 14) {
         t2.unsubscribe();
-     }
+    }
 });
 
 
