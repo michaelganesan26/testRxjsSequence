@@ -24,10 +24,24 @@ var updateTicks = function (x) {
     return (counter);
 };
 //Execute statements
-var ticks$ = Observable_1.Observable.interval(1000).map(updateTicks).distinct();
-var test$ = ticks$.subscribe(function (x) {
-    console.log("Your current tick is: " + colors.yellow(counter.toString()));
-    if (counter === 13) {
-        test$.unsubscribe();
+// const ticks$ = Observable.interval(1000).map(updateTicks).distinct();
+// let test$ = ticks$.subscribe(x=>{
+//     console.log(`Your current tick is: ${colors.yellow(counter.toString())}`);
+//     if(counter === 13){
+//         test$.unsubscribe();
+//     }
+// });
+//using scan to send the variable and eliminate external reference
+var ticks$ = Observable_1.Observable.interval(500).scan(updateTicks, 0); //no reliance on external variables
+var t1 = ticks$.subscribe(function (eventTicks) {
+    console.log("Your event tick counter is local to the stream pipe line: " + colors.magenta(eventTicks.toString()));
+    if (eventTicks === 13) {
+        t1.unsubscribe();
+    }
+});
+var t2 = ticks$.subscribe(function (eventTicks) {
+    console.log("Your event tick counter is local to the stream pipe line: " + colors.yellow(eventTicks.toString()));
+    if (eventTicks === 14) {
+        t2.unsubscribe();
     }
 });
