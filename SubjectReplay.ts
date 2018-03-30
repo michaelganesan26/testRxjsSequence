@@ -16,29 +16,32 @@ import * as colors from 'colors';
 
 const TIME:number = 3000;
 
-const subject$ = new ReplaySubject(null,1000);
+const subject$ = new ReplaySubject(null,200);
 
 
 setTimeout(() => {
     subject$.next(1);
-}, 500);
+}, 100);
 
 
 setTimeout(() => {
     subject$.next(2);
-}, 600);
+}, 200);
 
 setTimeout(() => {
     subject$.next(3);
-}, 700);
+    subject$.next(6);
+}, 300);
 
 setTimeout(() => {
     subject$.subscribe((next:any)=>{
         console.log(`Your value is: ${next}`);
-
+     
     });
 
-}, 1000);
+    subject$.next(5);
+
+}, 350);
 
 
 

@@ -10,18 +10,20 @@ exports.__esModule = true;
 var ReplaySubject_1 = require("rxjs/ReplaySubject");
 require("rxjs");
 var TIME = 3000;
-var subject$ = new ReplaySubject_1.ReplaySubject(null, 1000);
+var subject$ = new ReplaySubject_1.ReplaySubject(null, 200);
 setTimeout(function () {
     subject$.next(1);
-}, 500);
+}, 100);
 setTimeout(function () {
     subject$.next(2);
-}, 600);
+}, 200);
 setTimeout(function () {
     subject$.next(3);
-}, 700);
+    subject$.next(6);
+}, 300);
 setTimeout(function () {
     subject$.subscribe(function (next) {
         console.log("Your value is: " + next);
     });
-}, 1000);
+    subject$.next(5);
+}, 350);
