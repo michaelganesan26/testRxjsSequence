@@ -9,19 +9,19 @@
 exports.__esModule = true;
 var ReplaySubject_1 = require("rxjs/ReplaySubject");
 require("rxjs");
-var subject$ = new ReplaySubject_1.ReplaySubject(null, TIME);
 var TIME = 3000;
+var subject$ = new ReplaySubject_1.ReplaySubject(null, 1000);
 setTimeout(function () {
     subject$.next(1);
-}, TIME);
+}, 500);
 setTimeout(function () {
     subject$.next(2);
-}, TIME);
+}, 600);
 setTimeout(function () {
     subject$.next(3);
-}, TIME);
+}, 700);
 setTimeout(function () {
     subject$.subscribe(function (next) {
         console.log("Your value is: " + next);
     });
-}, TIME);
+}, 1000);

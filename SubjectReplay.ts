@@ -14,21 +14,23 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import 'rxjs';
 import * as colors from 'colors';
 
-const subject$ = new ReplaySubject(null,TIME);
 const TIME:number = 3000;
+
+const subject$ = new ReplaySubject(null,1000);
+
 
 setTimeout(() => {
     subject$.next(1);
-}, TIME);
+}, 500);
 
 
 setTimeout(() => {
     subject$.next(2);
-}, TIME);
+}, 600);
 
 setTimeout(() => {
     subject$.next(3);
-}, TIME);
+}, 700);
 
 setTimeout(() => {
     subject$.subscribe((next:any)=>{
@@ -36,7 +38,7 @@ setTimeout(() => {
 
     });
 
-}, TIME);
+}, 1000);
 
 
 
