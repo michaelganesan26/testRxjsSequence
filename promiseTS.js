@@ -1,11 +1,12 @@
 "use strict";
-exports.__esModule = true;
-var colors = require("colors");
-var getCustomer = function (customer) {
-    var myPromise = new Promise(function (resolve, reject) {
-        setTimeout(function () {
+//This is a test of running the code runing asychronous
+Object.defineProperty(exports, "__esModule", { value: true });
+const colors = require("colors");
+var getCustomer = (customer) => {
+    let myPromise = new Promise((resolve, reject) => {
+        setTimeout(() => {
             if (customer > 2500) {
-                resolve("The customer qualifies for an increase in credit!!");
+                resolve(`The customer qualifies for an increase in credit!!`);
             }
             else {
                 reject('The customer does not qualify for a credit increase');
@@ -14,11 +15,11 @@ var getCustomer = function (customer) {
     });
     return (myPromise);
 };
-var testCode = function (customer) {
-    getCustomer(customer).then(function (success) {
-        console.log(colors.magenta("Success " + success));
-    }, function (reject) {
-        console.log(colors.yellow("Failed " + reject));
+var testCode = (customer) => {
+    getCustomer(customer).then((success) => {
+        console.log(colors.magenta(`Success, ${success}`));
+    }, (reject) => {
+        console.log(colors.yellow(`Failed, ${reject}`));
     });
 };
 testCode(3000);

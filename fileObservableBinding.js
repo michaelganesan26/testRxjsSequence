@@ -1,10 +1,10 @@
 "use strict";
-exports.__esModule = true;
-var fs = require("fs");
-var path = require("path");
-var Observable_1 = require("rxjs/Observable");
+Object.defineProperty(exports, "__esModule", { value: true });
+const fs = require("fs");
+const path = require("path");
+const Observable_1 = require("rxjs/Observable");
 require("rxjs/observable/bindNodeCallback");
-var filePath = path.join(__dirname);
+const filePath = path.join(__dirname);
 console.log(filePath);
 // fs.readdir(filePath, (error, files) => {
 //     if (error) {
@@ -15,4 +15,4 @@ console.log(filePath);
 //         console.log(x);
 //     });
 // });
-var readdir$ = Observable_1.Observable.bindNodeCallback(fs.readdir);
+const readdir$ = Observable_1.Observable.bindNodeCallback(fs.readdir);
