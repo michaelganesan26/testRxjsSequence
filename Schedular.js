@@ -1,11 +1,11 @@
 "use strict";
-exports.__esModule = true;
 /* ===========================
    Description: Schedular
    Date: 04/02/2018
    Notes: Sample application using a schedular
  
    =========================== */
+exports.__esModule = true;
 var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/observable/range");
 require("rxjs/add/operator/groupBy");

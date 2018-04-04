@@ -1,5 +1,3 @@
-import { Subject } from 'rxjs';
-
 /* ===========================
    Description: Schedular 
    Date: 04/02/2018
@@ -108,11 +106,6 @@ Observable.range(1, MAX_RANGE).subscribe((x: number) => {
     console.log("Initialized the array");
 
     displayObserveOn();
-
-
-
-
-
 });
 
 
