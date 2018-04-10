@@ -1,5 +1,23 @@
+
+/* ===========================
+   Description: Use group by to create filters for data sets
+   Date: 04/05/2018
+   Notes: Filter the data using group by and pipe
+ 
+   =========================== */
+
+
+import { Observable } from 'rxjs/Observable';
 import { from } from 'rxjs/observable/from';
 import { groupBy, mergeMap, toArray } from 'rxjs/operators';
+import * as _ from 'lodash';
+
+interface IPerson {
+  name: string;
+  age: number;
+
+
+}
 
 
 const people = [
@@ -16,10 +34,29 @@ const example = source.pipe(
   // return each item in group as array
   mergeMap(group => group.pipe(toArray()))
 );
+
+
 /*
   output:
   [{age: 25, name: "Sue"},{age: 25, name: "Frank"}]
   [{age: 30, name: "Joe"}]
   [{age: 35, name: "Sarah"}]
 */
-const subscribe = example.subscribe(val => console.log(val));
+
+let filterByAge = (age: number, group: IPerson[]): IPerson[] => {
+
+  return _.filter(group, (person: IPerson) => { return person.age === age });
+}
+
+const filterAge: number = 35;
+
+const subscribe = example.subscribe(val => {
+
+  let persons = filterByAge(filterAge, val);
+  if (persons.length > 0) {
+    console.log(persons);
+
+  }
+
+}
+);

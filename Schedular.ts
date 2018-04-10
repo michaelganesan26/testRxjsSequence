@@ -86,13 +86,8 @@ let displayObserveOn = () => {
        groupObserver$.subscribe(x=>{
            console.log(`${x}`);
        });
-
-
     });
-    
 }
-
-
 
 const MAX_RANGE: number = 50;
 
